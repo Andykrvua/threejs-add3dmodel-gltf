@@ -33,31 +33,12 @@
           1,
           5000
         );
-        // camera.rotation.y = (45 / 180) * Math.PI;
+
         camera.position.set(0, 25, 25);
         controls = new THREE.OrbitControls(camera, document.body);
         controls.addEventListener('change', renderer);
 
         scene.add(new THREE.AxesHelper(500));
-
-        // hlight = new THREE.AmbientLight(0xffffff, 2);
-        // scene.add(hlight);
-        // directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-        // directionalLight.position.set(0, 1, 0);
-        // directionalLight.castShadow = true;
-        // scene.add(directionalLight);
-        // light = new THREE.PointLight(0xffffff, 2);
-        // light.position.set(0, 300, 500);
-        // scene.add(light);
-        // light2 = new THREE.PointLight(0xc4c4c4, 1);
-        // light2.position.set(500, 100, 0);
-        // scene.add(light2);
-        // light3 = new THREE.PointLight(0xc4c4c4, 5);
-        // light3.position.set(0, 100, -500);
-        // scene.add(light3);
-        // light4 = new THREE.PointLight(0xc4c4c4, 6);
-        // light4.position.set(-500, 300, 500);
-        // scene.add(light4);
 
         // new light add
         hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 1);
@@ -81,12 +62,6 @@
         renderer.gammaOutput = true;
         renderer.gammaFactor = 2.2;
 
-        // If texture is used for color information, set colorspace.
-        // texture.encoding = THREE.sRGBEncoding;
-
-        // UVs use the convention that (0, 0) corresponds to the upper left corner of a texture.
-        // texture.flipY = false;
-
         document.body.appendChild(renderer.domElement);
 
         let loader = new THREE.GLTFLoader();
@@ -95,12 +70,6 @@
           car.position.set(9, -10, 0);
           car.scale.set(0.3, 0.3, 0.3);
           car.rotation.x = -2;
-          // car.scale.set(4, 4, 4);
-          // car.rotation.y = 0.15;
-          // car.rotation.x = -1.4;
-          // car.rotation.z = 3.6;
-          // car.position.y = 0;
-          // car.position.x = -86;
           scene.add(car);
           animate();
         });

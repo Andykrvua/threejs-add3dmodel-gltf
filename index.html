@@ -39,25 +39,26 @@
         camera.position.z = 1000;
         controls = new THREE.OrbitControls(camera, document.body);
         controls.addEventListener('change', renderer);
-        // hlight = new THREE.AmbientLight(0xffffff, 0.5);
+        // hlight = new THREE.AmbientLight(0xffffff, 0.6);
         // scene.add(hlight);
 
-        // directionalLight = new THREE.DirectionalLight(0xffffff, 3);
-        // directionalLight.position.set(0, 1, 0);
-        // directionalLight.castShadow = true;
-        // scene.add(directionalLight);
-        // light = new THREE.PointLight(0xc4c4c4, 4);
-        // light.position.set(0, 300, 500);
-        // scene.add(light);
-        // light2 = new THREE.PointLight(0xc4c4c4, 4);
-        // light2.position.set(500, 100, 0);
-        // scene.add(light2);
-        light3 = new THREE.PointLight(0xc4c4c4, 4);
-        light3.position.set(0, 100, -500);
+        directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+        directionalLight.position.set(0, 1, 0);
+        directionalLight.castShadow = true;
+        scene.add(directionalLight);
+        light = new THREE.PointLight(0xffffff, 2.1);
+        light.position.set(0, 300, 500);
+        scene.add(light);
+        light2 = new THREE.PointLight(0xffffff, 2.1);
+        light2.position.set(500, 100, 0);
+        scene.add(light2);
+        light3 = new THREE.PointLight(0xffffff, 2.1);
+        light3.position.set(0, 500, -500);
         scene.add(light3);
-        // light4 = new THREE.PointLight(0xc4c4c4, 10);
-        // light4.position.set(-500, 300, 500);
-        // scene.add(light4);
+        light4 = new THREE.PointLight(0xffffff, 2.1);
+        light4.position.set(-500, 300, 500);
+        scene.add(light4);
+
         renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
@@ -70,11 +71,23 @@
         loader.load('6030.gltf', function (gltf) {
           car = gltf.scene.children[0];
           // car.scale.set(15, 15, 15);
-          car.scale.set(0.1, 0.1, 0.1);
-          car.rotation.y = 0.3;
-          car.rotation.x = 0;
-          car.rotation.z = 3.5;
+          car.scale.set(0.4, 0.4, 0.4);
+          car.rotation.y = 0;
+          car.rotation.x = -299.7;
+          car.rotation.z = 0;
+          car.position.x = 300;
           scene.add(gltf.scene);
+          animate();
+        });
+        loader.load('scene.gltf', function (gltf2) {
+          car2 = gltf2.scene.children[0];
+          // car.scale.set(15, 15, 15);
+          car2.scale.set(15, 15, 15);
+          car2.rotation.y = 0.3;
+          car2.rotation.x = 0;
+          car2.rotation.z = 3.5;
+          car2.position.x = -300;
+          scene.add(gltf2.scene);
           animate();
         });
       }
